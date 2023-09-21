@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using Unity.Netcode;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController : NetworkBehaviour
 {
-
-
+    
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
+
         Vector3 moveDir = Vector3.zero;
 
         if(Input.GetKey(KeyCode.W)) moveDir.z = +1f;
@@ -20,3 +22,6 @@ public class CharacterController : MonoBehaviour
 
     }
 }
+
+
+
